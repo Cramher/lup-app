@@ -21,7 +21,13 @@ const TaskSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true
-  }
+  },
+  completedAt: Date,
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  },
+  deletedAt: { type: Date }
 });
 
 module.exports = mongoose.model('Task', TaskSchema);
