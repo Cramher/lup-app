@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import TaskBoard from './pages/TaskBoard';
@@ -14,6 +14,7 @@ function App() {
         <Route path="/Register" element={<Register />} />
         <Route path="/tasks" element={<TaskBoard />} />
         <Route path="/home" element={<LandingPage />} />
+        <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
     </BrowserRouter>
   );

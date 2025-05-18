@@ -26,6 +26,14 @@ function Register() {
       <h2>Registro</h2>
       <form onSubmit={handleSubmit}>
         <input
+          name="name"
+          type="name"
+          placeholder="Name"
+          value={form.name}
+          onChange={handleChange}
+          required
+        />
+        <input
           name="email"
           type="email"
           placeholder="Email"

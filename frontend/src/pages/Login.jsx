@@ -41,7 +41,7 @@ export default function LoginPage() {
                 <input type="password" name="password" placeholder="Password" value={form.password} onChange={handleChange} required />
                 <button type="submit">Log In</button>
             </form>
-            <p>Don't have an account yet?<Link to="/register">Sign Up Here</Link></p>
+            <p>Do not have an account yet? <Link to="/register">Sign Up Here</Link></p>
         </div>
     );
 }
