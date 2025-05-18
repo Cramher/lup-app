@@ -81,10 +81,10 @@ npm start
 ```
 ---
 
-## Como Probar la App
-1. Inicia en /login o /register.
-2. Crea tareas en /tasks y pruebalas con drag-and-drop.
-3. Navega a /dashboad desde el landing (/home) para explorar estadisticas.
+## Cómo Probar la App
+1. Inicia la app.
+2. Crea tareas en /tasks y pruébalas con drag-and-drop.
+3. Navega a /dashboard desde el landing (/home) para explorar estadisticas.
 4. Explora las metricas o ajusta lo que ves con los checkboxes.
 
 ---
@@ -95,15 +95,40 @@ Las métricas fueron elegidas pensando en ofrecer al usuario insights valiosos s
 ---
 
 ## Estructura de Carpetas
-├── backend
+
+```plaintext
+lup-app/
+├── backend/
 │   ├── controllers/
+│   │   ├── authController.js
+│   │   └── taskController.js
+│   ├── middleware/
+│   │   └── authMiddleware.js
 │   ├── models/
+│   │   ├── Task.js
+│   │   ├── User.js
+│   │   └── DeletedTask.js
 │   ├── routes/
-│   └── middleware/
-├── frontend
-│   ├── pages/
-│   ├── services/
-│   └── App.jsx
+│   │   ├── authRoutes.js
+│   │   └── taskRoutes.js
+│   ├── server.js
+│   └── .env
+├── frontend/
+│   ├── public/
+│   │   └── index.html
+│   ├── src/
+│   │   ├── pages/
+│   │   │   ├── Dashboard.jsx
+│   │   │   ├── LandingPage.jsx
+│   │   │   ├── Login.jsx
+│   │   │   ├── Register.jsx
+│   │   │   └── TaskBoard.jsx
+│   │   ├── services/
+│   │   │   └── api.js
+│   │   ├── App.jsx
+│   │   └── index.js
+└── README.md
+```
 
 ---
 
