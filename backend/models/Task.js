@@ -28,6 +28,6 @@ const TaskSchema = new mongoose.Schema({
     ref: 'User'
   },
   deletedAt: { type: Date }
-});
+}, { timestamps: true });
 
 module.exports = mongoose.model('Task', TaskSchema);

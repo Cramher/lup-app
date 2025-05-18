@@ -5,19 +5,20 @@ const {
   getTasks,
   createTask,
   updateTask,
-  deleteTask
+  deleteTask,
+  getMetrics,
+  getPrediction
 } = require('../controllers/taskController');
-const { getMetrics } = require('../controllers/taskController');
-const authMiddleware = require('../middleware/auth');
 
-// All routes require authentication
+// Aplica el middleware una vez para todas las rutas
 router.use(auth);
 
 router.get('/', getTasks);
 router.post('/', createTask);
 router.put('/:id', updateTask);
 router.delete('/:id', deleteTask);
-router.get('/metrics', authMiddleware, getMetrics);
+router.get('/metrics', getMetrics);
+router.get('/prediction', getPrediction);
 
 
 module.exports = router;

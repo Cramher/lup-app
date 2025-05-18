@@ -58,23 +58,23 @@ function TaskBoard() {
 
 
     const onDragEnd = async (result) => {
-        console.log("📦 Drag ended", result);
+        console.log("Drag ended", result);
 
         const { source, destination, draggableId } = result;
 
         if (!destination) {
-            console.log("🚫 Sin destino (cancelado o soltado afuera)");
+            console.log("No destination, dropping outside");
             return;
         }
 
         if (source.droppableId === destination.droppableId) {
-            console.log("➡️ Mismo contenedor, sin acción");
+            console.log("Same column, no need to update");
             return;
         }
 
         const newStatus = statusMap[destination.droppableId];
         if (!newStatus) {
-            console.warn("⚠️ Estado no encontrado en el mapa:", destination.droppableId);
+            console.warn("Status not found in map ", destination.droppableId);
             return;
         }
 
@@ -82,12 +82,12 @@ function TaskBoard() {
         const draggedTask = tasks.find(task => task._id.toString() === taskId);
 
         if (!draggedTask) {
-            console.error("❌ No se encontró la tarea con ID:", taskId);
+            console.error("No Task With ID:", taskId);
             return;
         }
 
         try {
-            console.log("🔄 Actualizando tarea", taskId, "a estado", newStatus);
+            console.log("Uptading Task", taskId, "To", newStatus);
 
             await api.put(`/tasks/${taskId}`, { status: newStatus }, {
                 headers: { Authorization: `Bearer ${token}` },
@@ -99,8 +99,8 @@ function TaskBoard() {
                 )
             );
         } catch (err) {
-            console.error("❌ Error al mover tarea", err);
-            alert('Error al mover tarea: ' + (err.response?.data?.error || 'Error inesperado'));
+            console.error("Moving Task Error", err);
+            alert('Moving Task Error: ' + (err.response?.data?.error || 'Unexpected error'));
         }
     };
 
@@ -121,7 +121,7 @@ function TaskBoard() {
             setTasks(prev => [...prev, res.data]);
             setFormData({ title: '', description: '', status: 'To do' });
         } catch (err) {
-            alert('No se pudo crear la tarea: ' + (err.response?.data?.error || 'Error inesperado'));
+            alert('Could not Create the Task: ' + (err.response?.data?.error || 'Unexpected error'));
         }
     };
 
@@ -142,7 +142,7 @@ function TaskBoard() {
             setTasks(prev => prev.map(t => t._id === id ? res.data : t));
             setEditingId(null);
         } catch (err) {
-            alert('No se pudo editar la tarea: ' + (err.response?.data?.error || 'Error inesperado'));
+            alert('Could not edit Task: ' + (err.response?.data?.error || 'Unexpected error'));
         }
     };
 
@@ -152,11 +152,14 @@ function TaskBoard() {
                 onClick={() => {
                     localStorage.removeItem('token');
                     localStorage.removeItem('token_expiry');
-                    navigate('/login');
+                    navigate('/');
                 }}
                 style={{ marginBottom: '1rem', float: 'right' }}
             >
                 Log out
+            </button>
+            <button onClick={() => navigate('/home')} style={{ marginBottom: '1rem' }}>
+                ← Back to Home
             </button>
             <h2 style={{ marginBottom: '1rem' }}><strong>My Tasks</strong></h2>
 
@@ -222,9 +225,53 @@ function TaskBoard() {
                                                                     background: '#fff',
                                                                 }}
                                                             >
-                                                                <strong>{task.title}</strong>
-                                                                <p>{task.description}</p>
-                                                                <p><em>{task.status}</em></p>
+                                                                {editingId === task._id ? (
+                                                                    <form onSubmit={(e) => {
+                                                                        e.preventDefault();
+                                                                        saveEdit(task._id);
+                                                                    }}>
+                                                                        <input
+                                                                            name="title"
+                                                                            value={editForm.title}
+                                                                            onChange={(e) => setEditForm(prev => ({ ...prev, title: e.target.value }))}
+                                                                        />
+                                                                        <input
+                                                                            name="description"
+                                                                            value={editForm.description}
+                                                                            onChange={(e) => setEditForm(prev => ({ ...prev, description: e.target.value }))}
+                                                                        />
+                                                                        <select
+                                                                            name="status"
+                                                                            value={editForm.status}
+                                                                            onChange={(e) => setEditForm(prev => ({ ...prev, status: e.target.value }))}
+                                                                        >
+                                                                            <option value="To do">To do</option>
+                                                                            <option value="In progress">In progress</option>
+                                                                            <option value="Completed">Completed</option>
+                                                                        </select>
+                                                                        <button type="submit">Save</button>
+                                                                        <button type="button" onClick={() => setEditingId(null)}>Cancel</button>
+                                                                    </form>
+                                                                ) : (
+                                                                    <>
+                                                                        <strong>{task.title}</strong>
+                                                                        <p>{task.description}</p>
+                                                                        <p><em>{task.status}</em></p>
+                                                                        <div style={{ marginTop: '0.5rem' }}>
+                                                                            <button onClick={() => startEdit(task)} style={{ marginRight: '0.5rem' }}>Edit</button>
+                                                                            <button onClick={async () => {
+                                                                                try {
+                                                                                    await api.delete(`/tasks/${task._id}`, {
+                                                                                        headers: { Authorization: `Bearer ${token}` },
+                                                                                    });
+                                                                                    setTasks(prev => prev.filter(t => t._id !== task._id));
+                                                                                } catch (err) {
+                                                                                    alert('Could not delete Task');
+                                                                                }
+                                                                            }}>Delete</button>
+                                                                        </div>
+                                                                    </>
+                                                                )}
                                                             </div>
                                                         )}
                                                     </Draggable>
