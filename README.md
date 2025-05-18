@@ -11,7 +11,7 @@ Aplicación fullstack de gestión de tareas con dashboard analítico, autenticac
 | Axios                | JWT (con Bcrypt)    | Mongoose       |
 | React Router DOM     | Dotenv              |                
 | @hello-pangea/dnd    |                                     
-| Recharts             |                                 |
+| Recharts             |                                 
 
 
 ---
@@ -41,8 +41,10 @@ Aplicación fullstack de gestión de tareas con dashboard analítico, autenticac
 - Exportación de métricas en formato **JSON** y **CSV**.
 
 ---
+## Vista Previa
+![Dashboard](.screenshots/Dashboard.png)
 
-## Instalación y ejecución
+## Instalación y Ejecución
 
 ### Backend
 ```bash
