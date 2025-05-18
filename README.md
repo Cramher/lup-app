@@ -3,7 +3,7 @@ Aplicación fullstack de gestión de tareas con dashboard analítico, autenticac
 
 ---
 
-## 🚀 Tecnologías Usadas
+## Tecnologías Usadas
 
 | **Frontend**             | **Backend**             | **Base de Datos** |
 |----------------------|---------------------|----------------|
@@ -41,8 +41,22 @@ Aplicación fullstack de gestión de tareas con dashboard analítico, autenticac
 - Exportación de métricas en formato **JSON** y **CSV**.
 
 ---
+
 ## Vista Previa
-![Dashboard](.screenshots/Dashboard.png)
+![Dashboard](./screenshots/Dashboard.png)
+![Kanban](./screenshots/TaskManager.png)
+
+---
+
+## Métricas Incluidas
+| **Métrica**                       | **Descripción** |
+|------------------------------|-------------|
+| Total de tareas              | Cuenta total de tareas creadas por el usuario. |
+| Porcentaje completadas       | % de tareas terminadas vs pendientes. |
+| Tiempo promedio de finalización | Calculado entre `createdAt` y `completedAt`. |
+| Productividad por día        | Cuántas tareas completas por día de la semana. |
+| Tasa de abandono             | % de tareas eliminadas sin haber sido completadas. |
+| Tiempo estimado para nuevas tareas | Promedio de tiempos de tareas anteriores. |
 
 ## Instalación y Ejecución
 
@@ -69,8 +83,8 @@ npm start
 
 ## Como Probar la App
 1. Inicia en /login o /register.
-2. Crea tareas en /tasks y pruebalas con draf-and-drop.
-3. Navega a /dashborad desde el landing (/home) para explorar estadisticas.
+2. Crea tareas en /tasks y pruebalas con drag-and-drop.
+3. Navega a /dashboad desde el landing (/home) para explorar estadisticas.
 4. Explora las metricas o ajusta lo que ves con los checkboxes.
 
 ---
@@ -90,6 +104,16 @@ Las métricas fueron elegidas pensando en ofrecer al usuario insights valiosos s
 │   ├── pages/
 │   ├── services/
 │   └── App.jsx
+
+---
+
+## Mejores prácticas aplicadas
+
+- Código modular y reutilizable.
+- Validaciones en frontend y backend.
+- Tokens JWT seguros con expiración.
+- Estructura clara por carpetas.
+- Componente de Dashboard interactivo y exportable.
 
 ---
 
