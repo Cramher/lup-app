@@ -1,8 +1,7 @@
 # TaskFlow – Lup App
 Aplicación fullstack de gestión de tareas con dashboard analítico, autenticación segura y funcionalidades interactivas tipo Kanban.
----
 
-## 🚀 Tecnologías Usadas
+---
 
 ## 🚀 Tecnologías Usadas
 
@@ -10,26 +9,26 @@ Aplicación fullstack de gestión de tareas con dashboard analítico, autenticac
 |----------------------|---------------------|----------------|
 | React.js             | Node.js + Express   | MongoDB        |
 | Axios                | JWT (con Bcrypt)    | Mongoose       |
-| React Router DOM     | Dotenv              |                |
-| @hello-pangea/dnd    |                     |                |
-| Recharts             |                     |                |
+| React Router DOM     | Dotenv              |                
+| @hello-pangea/dnd    |                                     
+| Recharts             |                                 |
 
 
 ---
 
-## 🛠️ Funcionalidades
+## Funcionalidades
 
-### 🔐 Autenticación
+### Autenticación
 - Registro e inicio de sesión con validación.
 - Protecciones por token y expiración automática.
 - Logout y navegación segura.
 
-### ✅ Gestión de Tareas
+### Gestión de Tareas
 - Crear, editar, eliminar tareas.
 - Drag & drop estilo Kanban: “To Do”, “In Progress”, “Completed”.
 - Persistencia en base de datos MongoDB.
 
-### 📊 Dashboard Analítico
+### Dashboard Analítico
 - Métricas calculadas desde backend:
   - Total de tareas.
   - Porcentaje de tareas completadas vs pendientes.
@@ -43,7 +42,7 @@ Aplicación fullstack de gestión de tareas con dashboard analítico, autenticac
 
 ---
 
-## 📦 Instalación y ejecución
+## Instalación y ejecución
 
 ### Backend
 ```bash
@@ -66,7 +65,7 @@ npm start
 ```
 ---
 
-### Como Probar la App
+## Como Probar la App
 1. Inicia en /login o /register.
 2. Crea tareas en /tasks y pruebalas con draf-and-drop.
 3. Navega a /dashborad desde el landing (/home) para explorar estadisticas.
@@ -74,12 +73,12 @@ npm start
 
 ---
 
-### Justificacion de Metricas
+## Justificacion de Metricas
 Las métricas fueron elegidas pensando en ofrecer al usuario insights valiosos sobre su productividad y hábitos de trabajo. La predicción se basa en el promedio de tiempo entre creación y completitud, lo que da una estimación razonable y explicable sin usar modelos complejos.
 
 ---
 
-### Estructura de Carpetas
+## Estructura de Carpetas
 ├── backend
 │   ├── controllers/
 │   ├── models/
@@ -92,11 +91,11 @@ Las métricas fueron elegidas pensando en ofrecer al usuario insights valiosos s
 
 ---
 
-### Autor
+## Autor
 Camilo Ramirez Hernandez
 Desarrollador.
 
 ---
 
-### Conclusion
+## Conclusion
 Este proyecto demuestra no solo habilidades técnicas en desarrollo frontend y backend, sino también pensamiento analítico al interpretar datos y convertirlos en información útil para los usuarios. El dashboard personalizable y exportable añade un toque profesional y diferencial.
